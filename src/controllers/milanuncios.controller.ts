@@ -6,7 +6,10 @@ export async function searchProperty(req: Request, res: Response) {
         const { province } = req.query;
         if (typeof province !== "string") return res.status(400).send("province must be a string");
 
-        return res.status(201).json(await searchPropertyByProvince(province));
+        const properties = await searchPropertyByProvince(province);
+        if(properties.length === 0) return res.status(404).send("No se ha encontrado ningun inmueble");
+
+        return res.status(201).json(properties[0]);
     } catch (error) {
         console.log(error);
         return res.status(500).send();

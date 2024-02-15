@@ -9,7 +9,7 @@ const method = "GET";
 
 export async function searchPropertyByProvince(
     provinceName: string,
-): Promise<Article> {
+): Promise<Article[]> {
     const params = new URLSearchParams();
     params.append("s", `provincia ${provinceName}`);
 
@@ -39,11 +39,11 @@ export async function searchPropertyByProvince(
         statusText: response.statusText,
         headers: Object.fromEntries(response.headers),
         province: provinceName,
-        property: milanuncios.articles[0],
+        property: milanuncios.articles[0] || {},
         sessionId,
         createdAt: Date.now(),
     });
     newRecord.save();
 
-    return milanuncios.articles[0];
+    return milanuncios.articles;
 }
