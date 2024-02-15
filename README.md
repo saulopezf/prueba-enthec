@@ -7,31 +7,31 @@ En esta prueba técnica esta desarrollado un scraper a la web de Milanuncios par
 #### En docker (prod)
 
 ```bash
-$ npm run build-docker
+npm run build-docker
 ```
 
 #### Dev
 
 ```bash
-$ npm install
-$ npm run start:dev
+npm install
+npm run start:dev
 ```
 
 #### Ejecutar JS compilado
 
 ```bash
-$ npm install
-$ npm run build
-$ npm run start
+npm install
+npm run build
+npm run start
 ```
 
 #### Tests
 
 ```bash
 # Si no se han instalado las dependencias
-$ npm install
+npm install
 
-$ npm run test
+npm run test
 ```
 
 ## Enpoints
@@ -41,7 +41,8 @@ $ npm run test
 Query params:
 
 - `province: string` Nombre de la provincia a buscar
-  Ejemplo: `localhost:3000/milanuncios/properties?province=galicia`
+
+Ejemplo: `localhost:3000/milanuncios/properties?province=galicia`
 
 #### `GET /provinces`
 
@@ -50,7 +51,8 @@ Query params:
 - `province: string` Nombre de la provincia a filtrar
 - `page: number` Página
 - `size: number` Elementos por página
-  Ejemplo: `localhost:3000/provinces?size=10&page=1&province=murcia`
+
+Ejemplo: `localhost:3000/provinces?size=10&page=1&province=murcia`
 
 #### `GET /provinces/fav`
 
