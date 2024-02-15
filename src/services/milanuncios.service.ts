@@ -23,10 +23,6 @@ export async function searchPropertyByProvince(
             [
                 "User-Agent",
                 userAgents[Math.floor(Math.random() * userAgents.length)],
-            ],
-            [
-                "Accept-Encoding",
-                "gzip, deflate, br"
             ]
         ],
     });
