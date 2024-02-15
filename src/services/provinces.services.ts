@@ -6,13 +6,13 @@ import { sessionId } from "../utils/session";
     Ordena por "createdAt" (timestamp)
     Pagina gracias al "skip" y "pageSize"
 */
-export async function findAll(skip: number, pageSize: number, province?: string) {
+export async function findAll(skip: number, pageSize: number, sortDesc: boolean, province?: string) {
     let query: { sessionId: string, province?: string } = { sessionId }
     if(province)
         query.province = province
 
     return await Property.find(query)
-        .sort({ createdAt: -1 })
+        .sort({ createdAt: sortDesc ? -1 : 1 })
         .skip(skip)
         .limit(pageSize);
 }

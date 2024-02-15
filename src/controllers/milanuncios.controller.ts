@@ -4,7 +4,7 @@ import { searchPropertyByProvince } from "../services/milanuncios.service";
 export async function searchProperty(req: Request, res: Response) {
     try {
         const { province } = req.query;
-        if (typeof province !== "string") return res.status(400).send();
+        if (typeof province !== "string") return res.status(400).send("province must be a string");
 
         return res.status(201).json(await searchPropertyByProvince(province));
     } catch (error) {

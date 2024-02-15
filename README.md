@@ -48,9 +48,10 @@ Ejemplo: `localhost:3000/milanuncios/properties?province=galicia`
 
 Query params:
 
-- `province: string` Nombre de la provincia a filtrar
-- `page: number` Página
-- `size: number` Elementos por página
+- `province: string` Nombre de la provincia a filtrar (si se omite no se filtrará ninguna provincia)
+- `page: number` Página (si se omite default: 1)
+- `size: number` Elementos por página (si se omite default: 10)
+- `sortDesc: boolean` Ordenar descendentemente por timestamp (si se omite se ordenará ascendentemente)
 
 Ejemplo: `localhost:3000/provinces?size=10&page=1&province=murcia`
 
