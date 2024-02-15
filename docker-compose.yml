@@ -1,0 +1,33 @@
+version: '3.5'
+
+services:
+  mascraper:
+    container_name: mascraper
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mascraper_db
+    environment:
+      - MONGO_HOST=mascraper_db
+      - MONGO_PORT=27017
+      - MONGO_USER=user
+      - MONGO_PASS=pass
+    command: ["npm", "run", "start"]
+
+  mascraper_db:
+    image: mongo:latest
+    container_name: mascraper_db
+    restart: always
+    ports:
+      - "27057:27017"
+    volumes:
+      - mascraper_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: pass
+
+volumes:
+  mascraper_data:
