@@ -30,14 +30,15 @@ describe("Milanuncios Service (integration test)", () => {
 
     it("search, scraps the page, and saves the data", async () => {
         const provinceName = "madrid";
-        const article = await searchPropertyByProvince(provinceName);
+        const articles = await searchPropertyByProvince(provinceName);
 
         expect(fetch).toHaveBeenCalledWith(
             "https://www.milanuncios.com/inmobiliaria?s=provincia+madrid",
             expect.any(Object),
         );
         expect(Property).toHaveBeenCalledTimes(1);
-        expect(article).toStrictEqual({
+        expect(Array.isArray(articles)).toBe(true);
+        expect(articles[0]).toStrictEqual({
             id: "480093599",
             titulo: "Las Rozas de Madrid - De Atenas",
             precio: "350.000 €",
